@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <label>Categories </label>
+        <select class="form-control form-control-lg" id="idCat" name="idCat"[(ngModel)]="IdDemographie" (change)="onChange()">
+            <option *ngFor="let cat of demographie" value="{{cat.idCat}}">
+                {{cat.nomCat}}
+            </option>
+        </select>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-stripped" >
+                <tr><th>ID Manga</th><th>Nom Manga</th><th>Mangaka</th><th>Prix</th><th>Date de creation</th><th>Demographique</th></tr>
+                <tbody>
+                    <tr *ngFor="let manga of manga">
+                        <td>{{manga.idManga}}</td>
+                        <td>{{manga.nomManga}}</td>
+                        <td>{{manga.Mangaka}}</td>
+                        <td>{{manga.prixManga}}</td>
+                        <td>{{manga.dateCreation | date:'dd/MM/yyyy'}}</td>
+                        <td>{{manga.demographie.nomCat}}</td>
+                       <td><a class="btn btn-danger" (click)="supprimerManga(manga)">Supprimer</a></td>
+                        <td><a class="btn btn-success" [routerLink]="['/updateManga', manga.nomManga]">Modifier</a></td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</div>

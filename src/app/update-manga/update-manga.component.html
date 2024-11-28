@@ -1,0 +1,51 @@
+<div class="container">
+    <div>
+        <h2>Modifier un Manga :</h2>
+    </div>
+    <form (ngSubmit)="updateManga()">
+        <div hidden class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID Manga</label>
+            <input type="text" [(ngModel)]="currentManga.idManga" name="idManga" class="form-control" [required]="!!currentManga.idManga">
+
+            <label>Nom Manga</label>
+            <input type="text" [(ngModel)]="currentManga.nomManga" name="nomManga" class="form-control" required>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom Mangaka</label>
+            <input type="text" [(ngModel)]="currentManga.Mangaka" name="Mangaka" class="form-control" required>
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Salaire</label>
+            <input type="number" [(ngModel)]="currentManga.prixManga" name="prixManga" class="form-control" required>
+        </div>
+        
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date création</label>
+            <input type="date" [ngModel]="currentManga.dateCreation | date: 'yyyy-MM-dd'" (ngModelChange)="currentManga.dateCreation = $event" name="dateCreation" class="form-control" required>
+        </div>
+        
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Démographique</label>
+            <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="updatedCatId" required>
+                <option *ngFor="let cat of demographie" [value]="cat.idCat">
+                    {{ cat.nomCat }}
+                </option>
+            </select>
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Email</label>
+            <input type="email" [(ngModel)]="currentManga.email" name="email" class="form-control" required>
+        </div>
+
+        <!-- New Password Field -->
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Password</label>
+            <input type="password" [(ngModel)]="currentManga.password" name="password" class="form-control" required minlength=6>
+        </div>
+        
+        <div class="mt-2">
+            <button type="submit" class="btn btn-success">Modifier</button>
+        </div>
+    </form>
+</div>

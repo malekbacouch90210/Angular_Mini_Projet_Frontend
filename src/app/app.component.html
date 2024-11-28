@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Manga List</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/mangas">Mangas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Make new manga
+          </a>
+          <ul class="dropdown-menu">
+            <li><a *ngIf="authService.isAdmin()" class="dropdown-item" routerLink="/add-manga">Add new Manga</a></li>
+            <li><a class="dropdown-item" href="#">Another add new manga</a></li>
+            <li><a class="dropdown-item" routerLink="/rechercheParDemographiqe" >Recherche Par Demographie</a></li>
+            <a class="dropdown-item" routerLink="/rechercheParNom" >Recherche Par Nom</a>
+            <a class="dropdown-item" routerLink="/listeDemographie" >Gestion des Demographie</a> 
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+      <li> <a class="nav-link">{{authService.loggedUser}}</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Connexion
+        </a>
+        <ul class="dropdown-menu">
+          <li><a  class="dropdown-item" routerLink="/login">login</a></li>
+          <li><a class="dropdown-item" href="#">Sign up</a></li>
+          <li><a *ngIf="authService.isloggedIn" class="dropdown-item" (click) = "logout()">logout</a></li>
+        </ul>
+      </li>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

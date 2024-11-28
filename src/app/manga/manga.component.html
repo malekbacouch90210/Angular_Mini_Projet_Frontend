@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-stripped" >
+                <tr><th>ID Manga</th><th>Nom Manga</th><th>Mangaka</th><th>Prix</th><th>Date de creation</th><th>Demographie</th><th>Email</th><th>Password</th></tr>
+                <tbody>
+                    <tr *ngFor="let manga of mangas">
+                        <td>{{manga.idManga}}</td>
+                        <td>{{manga.nomManga}}</td>
+                        <td>{{manga.Mangaka}}</td>
+                        <td>{{manga.prixManga}}</td>
+                        <td>{{manga.dateCreation | date:'dd/MM/yyyy'}}</td>
+                        <td>{{manga.demographie.nomCat }}</td>
+                        <td>{{manga.email}}</td>
+                        <td>{{manga.password}}</td>
+                        <td><a *ngIf="authService.isAdmin()"  class="btn btn-danger" (click)="supprimerManga(manga)">Supprimer</a></td>
+                        <td><a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateManga', manga.idManga]">Modifier</a></td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</div>

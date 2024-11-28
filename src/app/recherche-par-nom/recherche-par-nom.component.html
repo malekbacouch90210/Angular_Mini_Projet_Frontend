@@ -1,0 +1,43 @@
+<div class="container">
+
+    <form class="form-inline">      
+        <div class="form-group mx-sm-3 mb-2 mt-2 "> 
+            <label>Nom Manga</label> 
+            <input type="text" class="form-control" [(ngModel)]="nomManga" name="nomManga" class="form-control"> 
+            <button type="submit" (click)="rechercherMans()" class="btn btn-primary mb-2 ml-2">Rechercher</button> 
+        </div> 
+    </form>    
+   <!--  <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+            <label>Nom Produit en tapant</label>
+            <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" >
+        </div>
+    </form> -->
+    <!-- <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+            <label>Nom Produit en tapant</label>
+            <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+        </div>
+    </form> -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-stripped " >
+                <tr><th>ID Manga</th><th>Nom Manga</th><th>Mangaka</th><th>Prix</th><th>Date de creation</th><th>Demographique</th></tr>
+                <tbody>
+                    <tr *ngFor="let manga of manga | searchFilter: searchTerm">
+                        <td>{{manga.idManga}}</td>
+                        <td>{{manga.nomManga}}</td>
+                        <td>{{manga.Mangaka}}</td>
+                        <td>{{manga.prixManga}}</td>
+                        <td>{{manga.dateCreation | date:'dd/MM/yyyy'}}</td>
+                        <td>{{manga.demographie.nomCat}}</td>
+                        <td><a class="btn btn-danger" (click)="supprimerManga(manga)">Supprimer</a></td>
+                        <td><a class="btn btn-success" [routerLink]="['/updateManga', manga.nomManga]">Modifier</a></td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</div>
+
